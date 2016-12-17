@@ -8,11 +8,11 @@
     function __construct()
     {
       parent::__construct();
-      $this->load->model('User_model');
+      $this->load->model('Anggota_model');
     }
 
     function index(){
-
+      $this->registrasi();
     }
 
     function registrasi(){
@@ -69,7 +69,7 @@
               $this->image_lib->clear();
 
               $this->db->set('anggota_kd',$this->getkode_otomatis());
-              $this->User_model->insertanggota($avatar_path);
+              $this->Anggota_model->insertanggota($avatar_path);
 
           endif;
         else:
@@ -92,7 +92,7 @@
     function getkode_otomatis(){
       $thndaftar=date('Y');
       $sub_thndaftar=substr($thndaftar,2);
-      $getkode=$this->User_model->getkdanggota();
+      $getkode=$this->Anggota_model->getkdanggota();
       $kdmember="";
       foreach ($getkode->result() as $gtkode):
         if($gtkode->anggota_kd==NULL):
@@ -102,10 +102,6 @@
         endif;
       endforeach;
       return $kdmember;
-    }
-
-    function sukses(){
-      echo "Data Masuk Database. Terima Kasih";
     }
   }
 
