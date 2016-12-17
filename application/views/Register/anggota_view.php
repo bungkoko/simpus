@@ -68,7 +68,7 @@
                 <b>Step1</b> : Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
               </div>
               <div role="tabpanel" class="tab-pane" id="step2">
-                <form action="<?php echo site_url('member/proses_reg');?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo site_url('anggota/proses_reg');?>" method="POST" enctype="multipart/form-data">
                   <div class="col-sm-6 col-xs-6">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1">
@@ -94,8 +94,8 @@
 				           </div>
                    <div class="input-group">
                      <span class="input-group-addon" id="basic-addon2">
-                       <i class="fa fa-tty" aria-hidden="true"></i></span>
-                     <input type="text" class="form-control" name="anggota_notelp" placeholder="Nomor Telpon / Handphone" aria-describedby="basic-addon2">
+                       <i class="fa fa-phone" aria-hidden="true"></i></span>
+                     <input type="text" class="form-control" name="anggota_notelpon" placeholder="Nomor Telpon / Handphone" aria-describedby="basic-addon2">
                    </div>
                     <div>
                       <div class="radio radio-inline">
@@ -112,6 +112,17 @@
                       <span class="input-group-addon" id="basic-addon1">
                         <i class="fa fa-address-book-o" aria-hidden="true"></i></span>
                       <textarea type="text" class="form-control" name="anggota_alamat" placeholder="Alamat" aria-describedby="basic-addon1"></textarea>
+                    </div>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1">
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                      </span>
+                        <select class="select2" name="anggota_status">
+                          <option value="" disabled>-Status Pendidikan-</option>
+                          <option value="pelajar">Pelajar</option>
+                          <option value="mahasiswa">Mahasiswa</option>
+                          <option value="Umum">Umum</option>
+                        </select>
                     </div>
                   </div>
 

@@ -511,3 +511,18 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+
+/*Setting Upload*/
+$config['upload_path_avatar']='/upload/anggota/';
+$config['upload_path_koleksi']='/upload/koleksi/';
+
+$config['allowed_types']='jpg|jpeg|png|gif';
+$config['max_size']='2000';
+$config['max_width']='0';
+$config['max_height']='0';
+
+$config['image_library']='GD2';
+$config['maintain_ratio']=TRUE;
+$config['width']='300';
+$config['height']='300';
