@@ -82,31 +82,28 @@
       endif;
     }
 
-    //Uji Coba 
+    //Uji Coba
     function getkode_otomatis($getkodegenre){
       //$getkodegenre=$this->input->post('simpus_genre_genre_kd');
-
-      $getgenre=$this->genre_model->getgenrebykd($getkodegenre);
-
-
-      $getkodekoleksi=$this->koleksi_model->getkdkoleksi();
       $kdkoleksi="";
       $singkatan="";
-      $kdgenre="";
+      $getgenre=$this->genre_model->getgenrebykd($getkodegenre);
+
       foreach($getgenre->result() as $gtgenre):
         $singkatan=$gtgenre->genre_singkatan;
-        $kdgenre=$gtgenre->genre_kd;
       endforeach;
+
+      $getkodekoleksi=$this->koleksi_model->getkdkoleksi($singkatan);
 
       foreach ($getkodekoleksi->result() as $gtkodekoleksi):
         if($gtkodekoleksi->koleksi_kd==NULL):
-          $kdkoleksi=$singkatan.'-'.'0001';
+            $kdkoleksi='0001';
         else:
-          $sub_kdkoleksi=substr($gtkodekoleksi->koleksi_kd,4);
-          $kdkoleksi=$singkatan.'-'.sprintf("%04s",$sub_kdkoleksi + 1);
+            $sub_kdkoleksi=substr($gtkodekoleksi->koleksi_kd,4);
+            $kdkoleksi=sprintf("%04s",$sub_kdkoleksi + 1);
         endif;
       endforeach;
-      print_r($kdkoleksi);
+      print_r($singkatan.'-'.$kdkoleksi);
     }
 
 

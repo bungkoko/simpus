@@ -28,8 +28,9 @@ class Koleksi_model extends CI_Model
     return $this->db->insert('simpus_koleksi');
   }
 
-  function getkdkoleksi(){
+  function getkdkoleksi($singkatan){
     $this->db->select_max('koleksi_kd');
+    $this->db->like('koleksi_kd',$singkatan);
     return $this->db->get('simpus_koleksi');
   }
 
