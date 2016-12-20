@@ -18,6 +18,7 @@
 
     function inputkoleksi(){
       $data['title']='Input Data Koleksi';
+      $data['gtgenre']=$this->genre_model->getgenre()->result();
       $data['content']='Dashboard/Koleksi/InputKoleksi';
       $this->load->view('index',$data);
     }
@@ -82,9 +83,9 @@
       endif;
     }
 
-    //Uji Coba
-    function getkode_otomatis($getkodegenre){
-      //$getkodegenre=$this->input->post('simpus_genre_genre_kd');
+
+    function getkode_otomatis(){
+      $getkodegenre=$this->input->post('simpus_genre_genre_kd');
       $kdkoleksi="";
       $singkatan="";
       $getgenre=$this->genre_model->getgenrebykd($getkodegenre);
@@ -103,7 +104,7 @@
             $kdkoleksi=$singkatan.'-'.sprintf("%04s",$sub_kdkoleksi + 1);
         endif;
       endforeach;
-      print_r($kdkoleksi);
+      $kdkoleksi;
     }
 
 
