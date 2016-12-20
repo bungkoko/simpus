@@ -97,13 +97,13 @@
 
       foreach ($getkodekoleksi->result() as $gtkodekoleksi):
         if($gtkodekoleksi->koleksi_kd==NULL):
-            $kdkoleksi='0001';
+            $kdkoleksi=$singkatan.'-'.'0001';
         else:
             $sub_kdkoleksi=substr($gtkodekoleksi->koleksi_kd,4);
-            $kdkoleksi=sprintf("%04s",$sub_kdkoleksi + 1);
+            $kdkoleksi=$singkatan.'-'.sprintf("%04s",$sub_kdkoleksi + 1);
         endif;
       endforeach;
-      print_r($singkatan.'-'.$kdkoleksi);
+      print_r($kdkoleksi);
     }
 
 
