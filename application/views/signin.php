@@ -34,7 +34,7 @@
                 <div class="form-header">
                   <div class="app-brand"><span class="highlight">Simplio</span> Admin</div>
                 </div>
-                <form method="post" action="<?php echo site_url('simpusadmin/signin')?>">
+                <form method="post" action="<?php echo site_url('dashboard/signin')?>">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1">
                         <i class="fa fa-user" aria-hidden="true"></i>
@@ -60,7 +60,7 @@
       </div>
     </div>
 
-  
+
 
 
     </body>

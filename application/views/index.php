@@ -11,10 +11,11 @@
       <title><?php echo $title;?></title>
     </head>
     <body>
-      <div class="app app-default">
+      <div class="app-default">
+
           <?php $this->load->view($content);?>
+
       </div>
       <script type="text/javascript" src="<?php echo base_url()?>assets/js/vendor.js"></script>
-
     </body>
 </html>

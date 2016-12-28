@@ -3,20 +3,24 @@
  * Penulis : Purwanto, Joko
  * Sistem Perpustakaan
  */
-class Simpusadmin extends CI_Controller
+class Dashboard extends CI_Controller
 {
 
   function __construct()
   {
     parent::__construct();
     $this->load->model('user_model');
+    if($this->session->userdata('logged')==FALSE):
+      redirect('dashboard/signin');
+    endif;
   }
 
   function index(){
-    $this->signin();
+      $data['title']="Dashboard - Sistem Manajemen Perpustakaan";
+      $data['content']="Dashboard/home";
+      $this->load->view('index',$data);
   }
   function signin(){
-
     $this->load->library('form_validation');
     $this->form_validation->set_rules('username','username','required');
     $this->form_validation->set_rules('password','password','required');
@@ -33,9 +37,10 @@ class Simpusadmin extends CI_Controller
                           'namalengkap'=>$query->user_namalengkap,
                           'email'=>$query->user_email,
                           'rule'=>$query->user_rule,
+                          'logged'=>TRUE
         );
         $this->session->set_userdata($user_data);
-        redirect('simpusadmin/dashboard');
+        redirect('dashboard');
       else:
         $data['error']="Username atau Password Tidak sesuai dengan database";
       endif;
@@ -47,11 +52,14 @@ class Simpusadmin extends CI_Controller
     $this->load->view('index',$data);
   }
 
-  function Dashboard(){
-    $data['title']="Dashboard - Sistem Manajemen Perpustakaan";
-    $data['content']="Dashboard/home";
-    $this->load->view('index',$data);
+  function signout(){
+    $this->session->unset_userdata('username');
+    $this->session->unset_userdata('namalengkap');
+    $this->session->unset_userdata('email');
+    $this->session->unset_userdata('rule');
+    $this->session->unset_userdata('logged');
   }
+
 
 }
 

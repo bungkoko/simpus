@@ -10,20 +10,26 @@
       parent::__construct();
       $this->load->model('koleksi_model');
       $this->load->model('genre_model');
+      if($this->session->userdata('logged')==FALSE):
+        redirect('dashboard/signin');
+      endif;
     }
 
     function index(){
-
+      $this->insertkoleksi;
     }
 
-    function inputkoleksi(){
+    function insert(){
       $data['title']='Input Data Koleksi';
+      $data['gtkdotomatis']=$this->getkode_otomatis();
       $data['gtgenre']=$this->genre_model->getgenre()->result();
-      $data['content']='Dashboard/Koleksi/InputKoleksi';
+      $data['dashboard']='Koleksi/InputKoleksi';
+      $data['content']='Dashboard/home';
       $this->load->view('index',$data);
     }
 
     function proses_input(){
+
       if($this->input->post('submit')):
         $this->load->library('form_validation');
         $this->form_validation->set_rules('koleksi_judul','koleksi_judul','required');
@@ -71,8 +77,8 @@
               $this->image_lib->resize();
               $this->image_lib->clear();
 
-              $this->db->set('anggota_kd',$this->getkode_otomatis());
-              $this->Anggota_model->insertanggota($avatar_path);
+              $this->db->set('koleksi_kd',$this->getkode_otomatis());
+              $this->Anggota_model->insertkoleksi($avatar_path);
 
           endif;
         else:
