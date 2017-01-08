@@ -16,7 +16,27 @@
     }
 
     function index(){
-      $this->insertkoleksi;
+      //$config['base_url']=base_url().'koleksi/';
+
+    }
+
+    function list($offset=''){
+      $data['title']="Daftar Koleksi Buku";
+      //Declare Library Pagination
+      $this->load->library('pagination');
+      $config['base_url']=base_url().'koleksi/grid/';
+      $config['total_rows']=$this->koleksi_model->getAllkoleksi()->num_rows();
+      $config['per_page']='10';
+      $config['num_links']='6';
+
+      //create Pagination
+      $this->pagination->initialize($config);
+      $data['pagination']=$this->pagination->create_links();
+
+      //getdata from database
+      $data['gtlist']=$this->koleksi_model->getAllkoleksi($config['per_page'],$config['num_links']);
+      
+
     }
 
     function insert(){
@@ -28,7 +48,7 @@
       $this->load->view('index',$data);
     }
 
-    function proses_input(){
+    function proses_insert(){
 
       if($this->input->post('submit')):
         $this->load->library('form_validation');

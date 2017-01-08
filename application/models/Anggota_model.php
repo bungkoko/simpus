@@ -29,9 +29,15 @@ class Anggota_model extends CI_Model
   }
 
   function getkdanggota(){
-      $this->db->select_max('anggota_kd');
-      return $this->db->get('simpus_anggota');
-    }
+    $this->db->select_max('anggota_kd');
+    return $this->db->get('simpus_anggota');
+  }
+
+  function getanggota($num='',$limit=''){
+    $this->db->order_by('anggota_tgldaftar','desc');
+    $this->db->where($num,$limit);
+    return $this->db->get('simpus_anggota');
+  }
 }
 
 ?>

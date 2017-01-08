@@ -15,6 +15,10 @@
       $this->registrasi();
     }
 
+    function list(){
+
+    }
+
     function registrasi(){
       $data['title']="Registrasi Anggota Perpustakaan";
       $data['content']="Register/anggota_view";

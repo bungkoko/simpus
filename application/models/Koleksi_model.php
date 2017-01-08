@@ -34,6 +34,11 @@ class Koleksi_model extends CI_Model
     return $this->db->get('simpus_koleksi');
   }
 
+  function getAllkoleksi($num='',$offset=''){
+    $this->db->limit($num,$offset);
+    return $this->db->get('simpus_koleksi');
+  }
+
 
 
 
